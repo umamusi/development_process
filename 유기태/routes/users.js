@@ -1,9 +1,48 @@
+//user.js..
+
 var express = require('express');
 var router = express.Router();
+const User = require('../model/users');
+const mongoose=require('mongoose');
 
-/* GET users listing. */
+
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('signup');
 });
+
+//create...(signup)
+router.post('/',function(req,res,next){
+  console.log(req.body);
+  
+  var name=req.body.Name;
+  var id=req.body.ID;
+  var Pw=req.body.Password;
+
+  User.find({'ID':id})
+  .exec()
+  .then(user=>{
+    if(user.length>=1){
+      res.send('<scrpit type="text/javascript">alert("이미 존재하는 아이디입니다."); window.location="/users";</script>');
+    }
+    else{
+      const user = new User({
+        'Name':name,
+        'ID':id,
+        'Password':Pw
+      });
+      user
+      .save()
+      .then(result=>{
+        console.log(result);
+        res.redirect('/');
+      })
+      .catch(err=>{
+        console.log(err);
+      });
+    }
+  });
+});
+
+
 
 module.exports = router;

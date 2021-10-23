@@ -8,39 +8,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="hero">
-      <div class="navbar">
-        <ul>
-          <img src="/images/logo.png" alt="logo">
-        </ul>
-      </div>
-      <div class="banner">
-        <div class="left-column">
-          <img src="/images/banner.png" alt="banner">
+    <form action="/" method="POST">
+      <div class="hero">
+        <div class="navbar">
+          <ul>
+            <img src="/images/logo.png" alt="logo">
+          </ul>
         </div>
-        <div class="right-column">
-          <div class="UserID">
-            <h1>UserID</h1>
-            <input type="text">
+        <div class="banner">
+          <div class="left-column">
+            <img src="/images/banner.png" alt="banner">
           </div>
-          <div class="Password">
-            <h1>Password</h1>
-            <input type="password">
-          </div>
-          <div class="btn">
-            <button type="button" onclick="gamein()">sign in</button>
-            <button type="button" class="signup" onclick="signup()">sign up</button>
+          <div class="right-column">
+            <div class="UserID">
+              <h1>UserID</h1>
+              <input name="ID" type="text">
+            </div>
+            <div class="Password">
+              <h1>Password</h1>
+              <input name="Password" type="password">
+            </div>
+            <div class="btn">
+              <button>sign in</button>
+              <button type="button" class="signup" onclick="location.href='/users'">sign up</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <script>
-  function gamein(){
-     location.href="/about";
-  }
-  function signup(){
-    location.href="users/new";
-  }
-  </script>
+        <script>
+          function signup(){
+            location.href="users/new";
+          }
+      </script>
+    </form>
   </body>
 </html>
