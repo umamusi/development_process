@@ -22,7 +22,8 @@ router.post('/',function(req,res,next){
   .exec()
   .then(user=>{
     if(user.length>=1){
-      res.send('<scrpit type="text/javascript">alert("이미 존재하는 아이디입니다."); window.location="/users";</script>');
+      res.write("<script>alert('이미 존재하는 아이디입니다.')</script>");
+      res.write("<script>window.location='/'</script>");
     }
     else{
       const user = new User({
@@ -34,7 +35,7 @@ router.post('/',function(req,res,next){
       .save()
       .then(result=>{
         console.log(result);
-        res.redirect('/');
+        res.redirect('/'); /*절대주소*/
       })
       .catch(err=>{
         console.log(err);

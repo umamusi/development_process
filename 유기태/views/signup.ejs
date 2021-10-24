@@ -1,9 +1,40 @@
-<form action="/users" method="POST">
-    <label for="Name">Name</label>
-    <input name="Name" type="text" required/>
-    <label for="ID">ID</label>
-    <input name="ID" type="text" required/>
-    <label for="Password">Password</label>
-    <input name="Password" type="password" required/>
-    <button class="btn">SignUp!</button>
-</form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pentago-signup</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">  
+    </head>
+    <body>
+            <form action="/" method="POST">
+            <div class="hero">
+                <div class="navbar">
+                    <ul>
+                        <img src="/images/logo.png" alt="logo">
+                    </ul>
+                </div>
+                <div class="banner2">
+                    <div class="upper_column">
+                        <img src="/images/signup.png" alt="signup">
+                    </div>
+                    <div class="lower_column">                   
+                        <div class="username_s">
+                            <label>User-name</label>
+                            <input name="Name" type="text">
+                        </div>
+                        <div class="userid_s">
+                            <label>ID</label>
+                            <input name="ID" type="text">
+                        </div>
+                        <div class="userpw_s">
+                            <label>Password</label>
+                            <input name="Password" type="text">
+                        </div>
+                        <div class="btnsignup">
+                            <button class="btnsignup">confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
