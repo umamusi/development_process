@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/stylesheets/style.css">  
     </head>
     <body>
-            <form action="/" method="POST">
+        <form action="/users" method="POST">
             <div class="hero">
                 <div class="navbar">
                     <ul>
@@ -18,16 +18,16 @@
                     </div>
                     <div class="lower_column">                   
                         <div class="username_s">
-                            <label>User-name</label>
-                            <input name="Name" type="text">
+                            <label for="Name">User-name</label>
+                            <input name="Name" type="text" required/>
                         </div>
                         <div class="userid_s">
-                            <label>ID</label>
-                            <input name="ID" type="text">
+                            <label for="ID">ID</label>
+                            <input name="ID" type="text" require/>
                         </div>
                         <div class="userpw_s">
-                            <label>Password</label>
-                            <input name="Password" type="text">
+                            <label for="Password">Password</label>
+                            <input name="Password" type="Password" required/>
                         </div>
                         <div class="btnsignup">
                             <button class="btnsignup">confirm</button>

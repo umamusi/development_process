@@ -23,10 +23,11 @@ router.post('/',function(req,res,next){
   .then(user=>{
     if(user.length>=1){
       res.write("<script>alert('이미 존재하는 아이디입니다.')</script>");
-      res.write("<script>window.location='/'</script>");
+      res.write("<script>window.location='/users'</script>");
     }
     else{
       const user = new User({
+        "_id":new mongoose.Types.ObjectId(),
         'Name':name,
         'ID':id,
         'Password':Pw

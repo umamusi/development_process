@@ -12,6 +12,7 @@ router.get('/',function(req,res){
 
 
 router.post('/',function(req,res,next){
+  console.log(req.body);
   var id=req.body.ID;
   var Pw=req.body.Password;
 
