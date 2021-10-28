@@ -22,7 +22,7 @@ router.post('/',function(req,res,next){
   .exec()
   .then(user=>{
     if(user.length>=1){
-      res.write("<script>alert('이미 존재하는 아이디입니다.')</script>");
+      res.write("<script>alert('useless id')</script>");
       res.write("<script>window.location='/users'</script>");
     }
     else{

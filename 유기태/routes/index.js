@@ -24,8 +24,8 @@ router.post('/',function(req,res,next){
       res.render('signin');
     }
     else{
-      /*aler*/
-      res.write("<script>alert('패스워드가 틀렸습니다.')</script>");
+      /*alert*/
+      res.write("<script>alert('password failed!')</script>");
       res.write("<script>window.location='/'</script>");
       console.log("Pw")
     }
