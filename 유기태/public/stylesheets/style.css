@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Archivo', sans-serif;
-  background-color:lightgray
+  background-color:#81CBF8
 }
 .hero{
   width: 70%;
@@ -18,6 +18,7 @@
   margin-top: 80px; /*margin-top 위치 선정 같음 */
 }
 .left-column,.right-column{
+  border-radius: 40px;
   flex-basis: 50%;
 }
 .left-column img{
@@ -25,10 +26,11 @@
   height: 100%;
 }
 .right-column{
-  background-color: gray;
+  border-radius: 0px 40px 40px 0px;
+  background-color: #9EE7FA;
 }
 .UserID{
-  background-color: gray;
+  background-color: #9EE7FA;
   margin-top: 150px;
   margin-left: 100px;
 }
@@ -38,15 +40,15 @@
   border: 0;
   outline:none;
   position: relative;
-  background-color: gray;
+  background-color: #9EE7FA;
   border-bottom: 3px solid black;
 }
 .UserID h1{
-  background-color: gray;
+  background-color: #9EE7FA;
   font-size: 50px;
 }
 .Password{
-  background-color: gray;
+  background-color: #9EE7FA;
   margin-top: 20px;
   margin-left: 100px;
 }
@@ -55,17 +57,17 @@
   font-size: 30px;
   border: 0;
   outline:none;
-  background-color:gray;
+  background-color:#9EE7FA;
   border-bottom: 3px solid black;
 }
 .Password h1{
-  background-color: gray;
+  background-color: #9EE7FA;
   font-size: 50px;
 }
 .btn{
   margin-top: 100px;
   margin-left: 100px;
-  background-color: gray;
+  background-color: #9EE7FA;
 }
 .btn button{
   width: 190px;
@@ -76,11 +78,11 @@
   border-radius: 40px;
   cursor: pointer;
   color: black;
-  background: lightgray;
+  background: #3CD6E6;
   font-size: 30px;
 }
 .btn .signup{
-  background: linear-gradient(black,white);
+  background: linear-gradient(#0097AC,#3CD6E6);
   color: white;
 }
 .banner2{/*signup*/
@@ -151,3 +153,4 @@
   background: lightgray;
   font-size: 30px;
 }
+
