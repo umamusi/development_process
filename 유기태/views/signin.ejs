@@ -1,47 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Socket.IO 예제</title>
-</head>
-<body>
-    <ul id="messages" type="none">
-        <li id="usercount"></li>
-    </ul>
- 
-    <form id="msgform">
-        <input id="msginput" autocomplete="off" type="text">
-        <button type="submit">전송</button>
-    </form>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        var msgform = document.getElementById('msgform');
-        // socket.on 함수로 서버에서 전달하는 신호를 수신
-        socket.on('usercount', (count) => {
-            var userCounter = document.getElementById('usercount');
-            userCounter.innerText = "현재 " + count + "명이 서버에 접속해있습니다.";
-        });
-
-        // 메시지 수신시 HTML에 메시지 내용 작성
-        socket.on('message', (msg) => {
-            var messageList = document.getElementById('messages');
-            var messageTag = document.createElement("li");
-            messageTag.innerText = msg;
-            messageList.appendChild(messageTag);
-        });
-
-        msgform.onsubmit = (e) => {
-            e.preventDefault();
-            var msginput = document.getElementById('msginput');
-
-            // socket.emit으로 서버에 신호를 전달
-            socket.emit('message', msginput.value);
-
-            msginput.value = "";
-        };
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pentago</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">  
+    </head>
+    <body>
+        <div class="hero">
+            <div class="navbar">
+                <ul>
+                    <img src="/images/logo.png" alt="logo">
+                </ul>
+            </div>
+        </div>
+        <div class="banner3">
+            <div class="left_column1">
+                <label for="visitor">visitor</label> 
+            </div>
+            <div class="right_column1">
+                <div class="upper_column1">
+                    <label for="Roomindex">Roomindex</label> 
+                </div>
+                <div class="lower_column1">
+                    <ul style="overflow:auto; width:1400px;height:260px" id="messages" type="none">
+                        <li id="usercount"></li>
+                    </ul>
+         
+                    <form id="msgform">
+                        <input id="msginput" autocomplete="off" type="text">
+                        <button type="submit">전송</button>
+                    </form>
+        
+                    <script src="/socket.io/socket.io.js"></script>
+                    <script>
+                        var socket = io();
+                        var msgform = document.getElementById('msgform');
+                        // socket.on 함수로 서버에서 전달하는 신호를 수신
+                        socket.on('usercount', (count) => {
+                            var userCounter = document.getElementById('usercount');
+                            userCounter.innerText = "현재 " + count + "명이 서버에 접속해있습니다.";
+                        });
+        
+                        // 메시지 수신시 HTML에 메시지 내용 작성
+                        socket.on('message', (msg) => {
+                            var messageList = document.getElementById('messages');
+                            var messageTag = document.createElement("li");
+                            messageTag.innerText =  "아무개 : "+msg;
+                            messageList.appendChild(messageTag);
+                        });
+        
+                        msgform.onsubmit = (e) => {
+                            e.preventDefault();
+                            var msginput = document.getElementById('msginput');
+        
+                            // socket.emit으로 서버에 신호를 전달
+                            socket.emit('message', msginput.value);
+        
+                            msginput.value = "";
+                        };
+                    </script>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
