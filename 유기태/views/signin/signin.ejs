@@ -15,11 +15,40 @@
         </div>
         <div class="banner3">
             <div class="left_column1">
-                <label for="visitor">visitor</label> 
+                <ul style="overflow:auto; width:300px; height:800px" id="Visitor" type="none">
+                </ul>
             </div>
             <div class="right_column1">
                 <div class="upper_column1">
-                    <label for="Roomindex">Roomindex</label> 
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col" class="date">Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% if(posts == null || posts.length == 0){ %>
+                              <tr>
+                                <td colspan=2> There is no data to show :( </td>
+                              </tr>
+                            <% } %>
+                            <% posts.forEach(function(post) { %>
+                              <tr>
+                                <td>
+                                  <a href="/ingame/<%= post._id %>"><div class="ellipsis"><%= post.Title %></div></a>
+                                </td>
+                                <td>
+                                  <span data-date="<%= post.createdAt %>"></span> <!-- 1 -->
+                                </td>
+                              </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+
+                    <button type="button" class="signup" onclick="location.href='/ingame/new'">Create</button>
                 </div>
                 <div class="lower_column1">
                     <ul style="overflow:auto; width:1400px;height:260px" id="messages" type="none">
@@ -36,6 +65,13 @@
                         var socket = io();
                         var msgform = document.getElementById('msgform');
                         // socket.on 함수로 서버에서 전달하는 신호를 수신
+                        socket.on('visitor',(list)=>{
+                            var visitorList=document.getElementById('Visitor');
+                            var visitorTag=document.createElement('li');
+                            visitorTag.innerText=list;
+                            visitorList.appendChild(visitorTag);
+                        });
+
                         socket.on('usercount', (count) => {
                             var userCounter = document.getElementById('usercount');
                             userCounter.innerText = "현재 " + count + "명이 서버에 접속해있습니다.";
@@ -45,7 +81,7 @@
                         socket.on('message', (msg) => {
                             var messageList = document.getElementById('messages');
                             var messageTag = document.createElement("li");
-                            messageTag.innerText =  "아무개 : "+msg;
+                            messageTag.innerText = msg;
                             messageList.appendChild(messageTag);
                         });
         
@@ -54,10 +90,12 @@
                             var msginput = document.getElementById('msginput');
         
                             // socket.emit으로 서버에 신호를 전달
-                            socket.emit('message', msginput.value);
+                            socket.emit('message',"<%=user.Name%> : " + msginput.value);
         
                             msginput.value = "";
                         };
+
+                        socket.emit('visitor',"<%=user.Name%>");
                     </script>
                 </div>
             </div>

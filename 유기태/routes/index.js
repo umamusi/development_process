@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose=require('mongoose');
 const User = require('../model/users');
+var url=require('url');
 
 router.get('/',function(req,res){
     res.render('main');
@@ -21,7 +22,12 @@ router.post('/',function(req,res,next){
       console.log(err);
     }
     if(user.Password==Pw){
-      res.render('signin');
+      res.redirect(url.format({
+        pathname:'/ingame',
+        query:{
+          Name:user.Name
+        }
+      }))
     }
     else{
       /*alert*/

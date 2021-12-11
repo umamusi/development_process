@@ -21,7 +21,17 @@ app.set('port', port);
 
 var server = http.createServer(app);
 var io = socket(server);
-io.on('connection', (socket) => {   
+io.on('connection', (socket) => {
+
+  
+  socket.on('visitor', (list) => {
+      
+    console.log('Message received: ' + list);
+
+    io.emit('visitor', list);
+});
+ 
+
   socket.emit('usercount', io.engine.clientsCount);
 
   
